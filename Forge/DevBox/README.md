@@ -93,8 +93,6 @@ flowchart LR
 
     hub --> internet
     hub -- s2s vpn --> stuff
-
-    internet
 ```
 
 ## Logical Design
