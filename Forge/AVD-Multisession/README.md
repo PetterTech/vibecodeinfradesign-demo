@@ -127,7 +127,9 @@ The host pool will be configured as a pooled host pool with the following charac
 Session hosts will be deployed with the following configuration:
 
 - **Operating System**: Windows 11 Enterprise multisession (latest version)
-- **Join type**: Microsoft Entra ID joined or Hybrid joined (depending on application requirements)
+- **Join type**: Determined based on application requirements:
+  - **Microsoft Entra ID joined**: Recommended for cloud-native deployments without legacy application dependencies. Simplifies management and eliminates need for line-of-sight to domain controllers.
+  - **Hybrid joined**: Required if legacy applications need Kerberos authentication to on-premises resources or if existing Group Policy configurations must be applied.
 - **Region**: Norway East
 - **Virtual Network**: Connected to the AVD landing zone vNet
 - **Management**: Managed through Intune
@@ -150,7 +152,9 @@ The storage account for FSLogix profiles will be configured as follows:
 - **Performance tier**: Premium (SSD-based for low latency)
 - **Redundancy**: Zone-redundant storage (ZRS) for high availability
 - **File share**: SMB share for FSLogix profiles
-- **Authentication**: Microsoft Entra ID Kerberos or Active Directory Domain Services
+- **Authentication**: Depends on session host join type:
+  - **Microsoft Entra ID Kerberos**: For Entra ID joined or hybrid joined session hosts. Requires Microsoft Entra ID P1/P2 license and supports SSO to Azure Files.
+  - **Active Directory Domain Services**: For hybrid joined session hosts when Entra ID Kerberos is not available. Requires AD DS synchronization with Entra ID.
 - **Private Endpoint**: Enabled for secure access from session hosts
 
 ### Network Architecture
