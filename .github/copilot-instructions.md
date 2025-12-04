@@ -20,7 +20,7 @@ Designs can move directly from any Spark or Forge to the Graveyard if they are d
 Markdown code should follow following rules:
 
 - One sentence per line
-- Links should be formatted as [Excalidraw](https://excalidraw.com)
+- Links should be formatted as \[text](https://link.com)
 - Headings should be surrounded by blank lines
 - Bullet points should have a blank line before and after
 - No trailing spaces
